@@ -1,7 +1,81 @@
-<h1> Test </h1>
-<h1> Test 2 </h1>
-<table class="equation"><tbody><tr><td>
-<!--l. 16--><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
-<mstyle id="x1-1001r1" class="label"></mstyle><!--endlabel--> <mtable align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr><mtd class="array" columnalign="center"><msubsup><mrow><mi>x</mi></mrow><mrow><mi>M</mi></mrow><mrow><mo class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo class="MathClass-close" stretchy="false">)</mo></mrow></msubsup> <mo class="MathClass-rel">=</mo> <msubsup><mrow><mi>x</mi></mrow><mrow><mi>M</mi></mrow><mrow><mo class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mo class="MathClass-close" stretchy="false">)</mo></mrow></msubsup><mi class="MathClass-op"> cos</mi><mo> ⁡<!--FUNCTION APPLICATION--></mo><!--nolimits--><mi>φ</mi> <mo class="MathClass-bin">−</mo> <msubsup><mrow><mi>y</mi></mrow><mrow><mi>M</mi></mrow><mrow><mo class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo class="MathClass-close" stretchy="false">)</mo></mrow></msubsup><mi class="MathClass-op"> sin</mi><mo> ⁡<!--FUNCTION APPLICATION--></mo><!--nolimits--><mi>φ</mi><mo class="MathClass-punc">,</mo></mtd>
-</mtr>  <mtr><mtd class="array" columnalign="center"><msubsup><mrow><mi>y</mi></mrow><mrow><mi>M</mi></mrow><mrow><mo class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo class="MathClass-close" stretchy="false">)</mo></mrow></msubsup> <mo class="MathClass-rel">=</mo> <msubsup><mrow><mi>x</mi></mrow><mrow><mi>M</mi></mrow><mrow><mo class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mo class="MathClass-close" stretchy="false">)</mo></mrow></msubsup><mi class="MathClass-op"> sin</mi><mo> ⁡<!--FUNCTION APPLICATION--></mo><!--nolimits--><mi>φ</mi> <mo class="MathClass-bin">+</mo> <msubsup><mrow><mi>y</mi></mrow><mrow><mi>M</mi></mrow><mrow><mo class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mo class="MathClass-close" stretchy="false">)</mo></mrow></msubsup><mi class="MathClass-op"> cos</mi><mo> ⁡<!--FUNCTION APPLICATION--></mo><!--nolimits--><mi>φ</mi><mo class="MathClass-punc">.</mo></mtd></mtr><!--cc--></mtable>
-</math></td><td class="eq-no">(1)</td></tr></tbody></table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Michał Batsch Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="Stylesheet" type="text/css" href="styles.css" />
+
+</head>
+<body>
+
+<section>
+  <nav>
+    <ul>
+      <img src="files/photo1.png" alt="Photo" class="img1">
+      <h1>Michał Batsch, PhD, Eng.</h1>
+      <h2>About me</h2>
+      <p>I am a mechanical engineer and scientist with over ten years of experience in scientific programming and computations including image and signal processing. Recently my scientific interests expanded to machine learning and neural networks. As a problem-solving-oriented person with the ability to understand complicated mathematical models and a strong mechanical engineering background, I am ready to dive into a data-driven world as a data scientist/ML engineer.</p>
+      <h2>Contact</h2>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">ResearchGate</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h2>Selected projects </h2>
+    <p>In this section, I present some of my work related to machine learning, image and signal processing, scientific programming and computations.</p>
+            <section class='FlexContainer'>
+            <div>
+                <img src="files/scara_thumb.png" alt="Double scara robot">
+                <h2>Vision based control of small educational double scara robot</h2>
+                <span>Python</span>  <span>OpenCV</span>  <span>TensorFlow</span> <span>Scikit-learn</span> <span>NumPy</span> <span>Scipy</span>  <span>C</span> <span>RaspberryPI</span> <span>Matlab</span> <span>Automatic code gen.</span>
+
+            </div>
+            <div>
+              <img src="files/autoencoder_thumb.png" alt="Autoencoder">
+              <h2>Gear fault detection by unsupervised deep learning of autoencoder</h2>
+              <span>Python</span>  <span>TensorFlow</span> <span>Scikit-learn</span> <span>NumPy</span> <span>Scipy</span>  <span>Pandas</span>
+              <p>Proposed method of failure detection in toothed gears is based on the reconstruction of gear case vibrational signal. Its effectiveness was tested in an experiment on a power circulation test stand. The method offers high efficiency (0.95 F1-measure) in gear state prediction (100% in failure detection, 89.8% in normal state prediction) and high sensitivity while it can detect even slight surface damage (initial pitting).</p>
+              <a href="#">Read more</a>
+            </div>
+            <div>
+              <img src="files/roundness_thumb.png" alt="Roundness">
+              <h2>Image processing algorithm for evaluation of the roundness of small objects</h2>
+              <span>Matlab</span> <span>OpenCV</span> <span>Optimization Toolbox</span>
+              <p>This was the part of larger project in which team under my lead was responsible for the design of a system for automatic control of small object – copper seals for fuel and gas installations. In the designed automatic control system machine vision was used among others to evaluate the roundness of manufactured sealings and their prefabricated material.  </p>
+              <a href="#">Read more</a>
+            </div>
+
+            <div>
+                <img src="files/honing_thumb.png" alt="Honing">
+                <h2>The method of prediction of tooth profile deviations in gear honing</h2>
+                <span>Matlab</span> <span>Differential geometry</span> <span>Optimization Toolbox</span>
+                <p>This project comes with my cooperation with one of the world's leading manufacturers of aerospace gears. The goal was to develop a method for effective error-free design of honing tools for airspace gears. I came up with the mathematical model of the gear honing process based on which the method of prediction of profile errors was established and used within the design flow of honing tools.</p>
+                <a href="#">Read more</a>
+            </div>
+
+            <div>
+                <img src="files/vibration_thumb.png" alt="Sofa">
+                <h2>Vibration excitation in gearboxes due to surface deviations</h2>
+                <span>Python</span> <span>NumPy</span> <span>Scipy</span> <span>Matlab</span> <span>Differential geometry</span> <span>Optimization Toolbox</span>
+                <p>This work is part of a larger international project related to the influence of gear accuracy on vibration and noise excitation. My job was to determine what is the influence of gear surface deviations on transmission error and the resulting vibration of the gearbox. For that purpose, I developed a mathematical model that enables to comparison transmission error spectrum with the spectrum of the actual gear case acceleration signal and evaluate its components and the influence on the gearbox's operation.</p>
+                <a href="#">Read more</a>
+            </div>
+                
+            <div>
+                <img src="files/sofa_thumb.png" alt="Vibrations">
+                <h2>What is the optimal shape of sofa?</h2>
+                <span>Matlab</span> <span>Differential geometry</span> <span>Optimization Toolbox</span>
+                <p>This project results from my interest in mathematics. What is the largest area of region that can be moved through a ninety-degree corner in a hallway of unit width? - this problem called "the moving sofa problem" was formulated for the first time by Moser and till now has not been solved fully. Here I present my implementation of the method for obtaining the shape and area of the sofa. The proposed approach is based on discrete solving the equations, which state the necessary conditions of envelope existence. </p>
+                <a href="#">Read more</a>
+
+            </div>
+
+        </section>
+  </article>
+</section>
+
+</body>
+</html>
+

@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="Stylesheet" type="text/css" href="styles.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js">
+    </script>
 </head>
 <body>
 
@@ -15,7 +19,9 @@
             <img src="files/photo1.png" alt="Photo" class="img1">
             <h1>Michał Batsch, PhD, Eng.</h1>
             <h2>About me</h2>
-            <p><info class="info"></info></p>
+            <p>
+                <info class="info"></info>
+            </p>
             <li><i class="fa fa-download"></i>&nbsp<a href="CV_Michal_Batsch.pdf" target="_blank">CV download</a></li>
             <h2>Contact</h2>
             <li><a href="https://www.linkedin.com/in/michal-batsch">LinkedIn</a></li>
@@ -85,7 +91,9 @@
         </math>
 
 
-        <p>where f<sub>i</sub>(<b>a</b>)=(x<sub>i</sub>-a<sub>2</sub>)<sup>2</sup>+(y<sub>i</sub>-a<sub>2</sub>)<sup>2</sup>-a<sub>3</sub><sup>2</sup> is an error function, <b>a</b>={a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>} is a vector of a parameters of
+        <p>where
+            f<sub>i</sub>(<b>a</b>)=(x<sub>i</sub>-a<sub>2</sub>)<sup>2</sup>+(y<sub>i</sub>-a<sub>2</sub>)<sup>2</sup>-a<sub>3</sub><sup>2</sup>
+            is an error function, <b>a</b>={a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>} is a vector of a parameters of
             searched circle, while a<sub>1</sub>, a<sub>2</sub> are coordinates of the center, and a<sub>3</sub> is its
             radius. The solution can be found numerically by „trust-region” or “Levenberg- Marquardt” algorithms.
             Roundness error is therefore obtained as the difference between the maximum and minimum distance of measured
@@ -260,12 +268,12 @@
 
         <h2>Results</h2>
         <section class='FlexContainer'>
-        <div>
-            <img src="files/roundness2.png" alt="Sample results" class="img2">
-        </div>
-        <div>
-            <img src="files/roundness3.png" alt="Sample results" class="img2">
-        </div>
+            <div>
+                <img src="files/roundness2.png" alt="Sample results" class="img2">
+            </div>
+            <div>
+                <img src="files/roundness3.png" alt="Sample results" class="img2">
+            </div>
         </section>
         <h2>Summary</h2>
 
@@ -277,12 +285,12 @@
         </ul>
 
         <section class='FlexContainer'>
-        <div align="left">
-            <a href="index.html">&#8592; Back to projects</a>
-        </div>
-        <div align="right">
-            <a href="#">&#8593; Back on top</a>
-        </div>
+            <div align="left">
+                <a href="index.html">&#8592; Back to projects</a>
+            </div>
+            <div align="right">
+                <a href="#">&#8593; Back on top</a>
+            </div>
         </section>
     </article>
 </section>

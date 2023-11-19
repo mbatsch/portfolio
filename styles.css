@@ -1,0 +1,139 @@
+/* SELEKTORY: */
+body {
+font-family: Calibri, Verdana, Arial, Helvetica, sans-serif;
+font-size: 12pt;
+color: #000000;
+background-color: white;
+max-width: max-content;
+margin: auto;
+}
+p {
+text-align: justify;
+}
+
+.info:before { content:
+ "I am a mechanical engineer and scientist with over ten years of experience in scientific programming and computations including image and signal processing. Recently my scientific interests expanded to machine learning and neural networks. As a problem-solving-oriented person with the ability to understand complicated mathematical models and a strong mechanical engineering background, I\a0 am ready to dive into a data-driven world as a data scientist/ML engineer." ;
+ text-align: justify;
+ }
+
+
+a:hover {
+color: #2776bb;
+	}
+
+* {
+  box-sizing: border-box;
+}
+
+h1   {
+font-size: 16pt;
+}
+h2   {
+font-size: 12pt;
+}
+
+header {
+  background-color: #666;
+  padding: 5px;
+  text-align: center;
+  font-size: 10px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+.center
+{
+ display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.img1
+{
+width: auto;
+}
+
+.img2
+{
+display: block;
+width: 90%;
+height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav {
+  float: left;
+  width: 300px;/*300px;*/
+  background: white;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 880px;/*880px;*/
+  background-color: white;
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 1200px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media only screen and (min-device-width : 100px) and (max-device-width : 500px) {
+  article, img, nav {
+    width: 100%;
+    height: auto;
+  }
+    img1 {
+    width: auto;
+    height: auto;
+  }
+}
+
+.FlexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    overflow: auto;
+    flex-direction: row;
+
+}
+
+.FlexContainer div {
+    width: 400px;
+    height: auto;
+    margin: 10px;
+    background-color: white;
+    padding:0px;
+
+}
+
+span {
+  background: #2776bb;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin: 0 0px;
+  -webkit-box-decoration-break: clone;
+  -moz-background-inline-policy: clone;
+  box-decoration-break: clone;
+  line-height: 150%
+}

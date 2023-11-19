@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Michał Batsch Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Stylesheet" type="text/css" href="styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<section>
+    <nav>
+        <ul>
+            <img src="files/photo1.png" alt="Photo" class="img1">
+            <h1>Michał Batsch, PhD, Eng.</h1>
+            <h2>About me</h2>
+            <p><info class="info"></info></p>
+            <li><i class="fa fa-download"></i>&nbsp<a href="CV_Michal_Batsch.pdf" target="_blank">CV download</a></li>
+            <h2>Contact</h2>
+            <li><a href="https://www.linkedin.com/in/michal-batsch">LinkedIn</a></li>
+            <li><a href="https://www.researchgate.net/profile/Michal-Batsch-2">ResearchGate</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <a href="index.html">&#8592; Back to projects</a>
+        <h1>Vibration excitation in gearboxes due to surface deviations</h1>
+        <h2>Used tools and packages</h2>
+        <span>Python</span> <span>NumPy</span> <span>Scipy</span> <span>Matlab</span> <span>Differential geometry</span>
+        <span>Optimization Toolbox</span>
+        <h2>Introduction</h2>
+
+        <p>This work is part of a larger international project related to the influence of gear accuracy on
+            vibration and noise excitation. My job was to determine what is the influence of gear surface
+            deviations on transmission error and the resulting vibration of the gearbox. For that purpose, I
+            developed a mathematical model that enables to comparison transmission error spectrum with the
+            spectrum of the actual gear case acceleration signal and evaluate its components and the influence
+            on the gearbox's operation.</p>
+
+        <h2>Methods</h2>
+
+        <p>The cylindrical helical gear pair was under consideration. It was assumed that teeth surfaces are described
+            by vectors:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">r</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>b</mi>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>cos</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>ζ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>φ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>s</mi>
+                                                <mi>y</mi>
+                                                <mi>m</mi>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mi>sin</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>ζ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>φ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>s</mi>
+                                                <mi>y</mi>
+                                                <mi>m</mi>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>b</mi>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>sin</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>ζ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>φ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>s</mi>
+                                                <mi>y</mi>
+                                                <mi>m</mi>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mi>cos</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>ζ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>φ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>s</mi>
+                                                <mi>y</mi>
+                                                <mi>m</mi>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>ζ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mi>cot</mi>
+                            <mo>⁡</mo>
+                            <mi>β</mi>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mn>1</mn>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">r</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mn>2</mn>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>b</mi>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mo>−</mo>
+                                    <mi>cos</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>ζ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>φ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>s</mi>
+                                                <mi>y</mi>
+                                                <mi>m</mi>
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mi>sin</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>ζ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>φ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>s</mi>
+                                                <mi>y</mi>
+                                                <mi>m</mi>
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>b</mi>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>sin</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>ζ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>φ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>s</mi>
+                                                <mi>y</mi>
+                                                <mi>m</mi>
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mi>cos</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>ζ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>t</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>φ</mi>
+                                            </mrow>
+                                            <mrow class="MJX-TeXAtom-ORD">
+                                                <mi>s</mi>
+                                                <mi>y</mi>
+                                                <mi>m</mi>
+                                                <mn>2</mn>
+                                            </mrow>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>ζ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mi>cot</mi>
+                            <mo>⁡</mo>
+                            <mi>β</mi>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mn>1</mn>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <p>and its units normal:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">n</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mfrac>
+                <mrow>
+                    <mfrac>
+                        <mrow>
+                            <mi mathvariant="normal">∂</mi>
+                            <msubsup>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi mathvariant="bold">r</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>1</mn>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mn>1</mn>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mrow>
+                        <mrow>
+                            <mi mathvariant="normal">∂</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>ζ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                        </mrow>
+                    </mfrac>
+                    <mo>×</mo>
+                    <mfrac>
+                        <mrow>
+                            <mi mathvariant="normal">∂</mi>
+                            <msubsup>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi mathvariant="bold">r</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>1</mn>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mn>1</mn>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mrow>
+                        <mrow>
+                            <mi mathvariant="normal">∂</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                        </mrow>
+                    </mfrac>
+                </mrow>
+                <mrow>
+                    <mo>|</mo>
+                    <mrow>
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msubsup>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi mathvariant="bold">r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <msub>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>ζ</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mn>1</mn>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                            </mrow>
+                        </mfrac>
+                        <mo>×</mo>
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msubsup>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi mathvariant="bold">r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <msub>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>t</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mn>1</mn>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                            </mrow>
+                        </mfrac>
+                    </mrow>
+                    <mo>|</mo>
+                </mrow>
+            </mfrac>
+            <mo>=</mo>
+            <mfrac>
+                <mn>1</mn>
+                <msqrt>
+                    <msubsup>
+                        <mi>r</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>1</mn>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                    </msubsup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>cot</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                    <mi>β</mi>
+                    <mo>+</mo>
+                    <msubsup>
+                        <mi>r</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>b</mi>
+                            <mn>1</mn>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                    </msubsup>
+                </msqrt>
+            </mfrac>
+            <mo>⋅</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mi>cot</mi>
+                            <mo>⁡</mo>
+                            <mi>β</mi>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mo stretchy="false">(</mo>
+                            <mo>±</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>ζ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>+</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>−</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>φ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>s</mi>
+                                        <mi>y</mi>
+                                        <mi>m</mi>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo stretchy="false">)</mo>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mo>−</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mi>cot</mi>
+                            <mo>⁡</mo>
+                            <mi>β</mi>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mo stretchy="false">(</mo>
+                            <mo>±</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>ζ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>+</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>−</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>φ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>s</mi>
+                                        <mi>y</mi>
+                                        <mi>m</mi>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo stretchy="false">)</mo>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>b</mi>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">n</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mn>2</mn>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mfrac>
+                <mrow>
+                    <mfrac>
+                        <mrow>
+                            <mi mathvariant="normal">∂</mi>
+                            <msubsup>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi mathvariant="bold">r</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>2</mn>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mn>2</mn>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mrow>
+                        <mrow>
+                            <mi mathvariant="normal">∂</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>ζ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                        </mrow>
+                    </mfrac>
+                    <mo>×</mo>
+                    <mfrac>
+                        <mrow>
+                            <mi mathvariant="normal">∂</mi>
+                            <msubsup>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi mathvariant="bold">r</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>2</mn>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mn>2</mn>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mrow>
+                        <mrow>
+                            <mi mathvariant="normal">∂</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                        </mrow>
+                    </mfrac>
+                </mrow>
+                <mrow>
+                    <mo>|</mo>
+                    <mrow>
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msubsup>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi mathvariant="bold">r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mn>2</mn>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <msub>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>ζ</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mn>2</mn>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                            </mrow>
+                        </mfrac>
+                        <mo>×</mo>
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msubsup>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi mathvariant="bold">r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mn>2</mn>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <msub>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>t</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mn>2</mn>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                            </mrow>
+                        </mfrac>
+                    </mrow>
+                    <mo>|</mo>
+                </mrow>
+            </mfrac>
+            <mo>=</mo>
+            <mfrac>
+                <mn>1</mn>
+                <msqrt>
+                    <msubsup>
+                        <mi>r</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                    </msubsup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>cot</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                    <mi>β</mi>
+                    <mo>+</mo>
+                    <msubsup>
+                        <mi>r</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                    </msubsup>
+                </msqrt>
+            </mfrac>
+            <mo>⋅</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mo>−</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mi>cot</mi>
+                            <mo>⁡</mo>
+                            <mi>β</mi>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mo stretchy="false">(</mo>
+                            <mo>±</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>ζ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>−</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>+</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>φ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>s</mi>
+                                        <mi>y</mi>
+                                        <mi>m</mi>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo stretchy="false">)</mo>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mi>cot</mi>
+                            <mo>⁡</mo>
+                            <mi>β</mi>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mo stretchy="false">(</mo>
+                            <mo>±</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>ζ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>−</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>+</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>φ</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>s</mi>
+                                        <mi>y</mi>
+                                        <mi>m</mi>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo stretchy="false">)</mo>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mo>−</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>r</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>b</mi>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <p>Tooth surface deviations resulting as an error in topography may be represented over the grid of coordinates
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>z</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>i</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>i</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+            </math>
+            ,
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>r</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>y</mi>
+                            <mi>i</mi>
+                        </mrow>
+                    </msub>
+                </mrow>
+                <mo>=</mo>
+                <msqrt>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>i</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>i</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                    <mo>+</mo>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>i</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>i</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                </msqrt>
+            </math>
+            as ΔS<sub>i</sub> (Fig. below) where i=1,2 refers to pinion and gear respectively.
+        </p>
+
+        <img src="files/vibrations1.png" alt="Surface" width="400" class="center">
+
+        <p>This surface may be obtained from real gear measurement ex. by interpolation over the measured tooth
+            profiles. Tooth surface with surface deviation is defined as:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">r</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>i</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo>∗</mo>
+                    <mo stretchy="false">(</mo>
+                    <mi>i</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">r</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>i</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>i</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>−</mo>
+            <mi mathvariant="normal">Δ</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+                <msub>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>S</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>i</mi>
+                    </mrow>
+                </msub>
+            </mrow>
+            <mo>⋅</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">n</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>i</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>i</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+        </math>
+
+        <p>In analyses instead of the ideal surface described the surfaces with topography errors should be taken into
+            account. Measured and interpolated surfaces of real gears are presented in Fig. below.</p>
+
+        <section class='FlexContainer'>
+            <div>
+                <img src="files/vibrations2.png" alt="Measured surface" class="img2">
+            </div>
+            <div>
+                <img src="files/vibrations3.png" alt="Measured surface" class="img2">
+            </div>
+        </section>
+
+        <p>Then in the fixed coordinate system we obtain:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">r</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow class="MJX-TeXAtom-ORD">
+                <mi mathvariant="bold">R</mi>
+                <mi mathvariant="bold">s</mi>
+            </mrow>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo stretchy="false">↦</mo>
+            <mi>f</mi>
+            <mo stretchy="false">)</mo>
+            <mo>⋅</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">r</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">r</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow class="MJX-TeXAtom-ORD">
+                <mi mathvariant="bold">R</mi>
+                <mi mathvariant="bold">s</mi>
+            </mrow>
+            <mo stretchy="false">(</mo>
+            <mn>2</mn>
+            <mo stretchy="false">↦</mo>
+            <mi>f</mi>
+            <mo stretchy="false">)</mo>
+            <mo>⋅</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">r</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mn>2</mn>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">n</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow class="MJX-TeXAtom-ORD">
+                <msub>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi mathvariant="bold">L</mi>
+                        </mrow>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>1</mn>
+                        <mo stretchy="false">↦</mo>
+                        <mi>f</mi>
+                    </mrow>
+                </msub>
+            </mrow>
+            <mo>⋅</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">n</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">n</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow class="MJX-TeXAtom-ORD">
+                <msub>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi mathvariant="bold">L</mi>
+                        </mrow>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                        <mo stretchy="false">↦</mo>
+                        <mi>f</mi>
+                    </mrow>
+                </msub>
+            </mrow>
+            <mo>⋅</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi mathvariant="bold">n</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mn>2</mn>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+        </math>
+
+
+        <p>The method for calculating the transmission error assumes a perfect mesh between pinion tooth Σ<sub>1</sub>
+            surface and gear tooth Σ<sub>2</sub> surface, i.e. one in which the gears are rotated by angles resulting
+            from the theoretical gear ratio
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>i</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>12</mn>
+                        </mrow>
+                    </msub>
+                </mrow>
+                <mo>=</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>z</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                    </msub>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo>/</mo>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>z</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>1</mn>
+                        </mrow>
+                    </msub>
+                </mrow>
+                <mo>=</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>φ</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>1</mn>
+                        </mrow>
+                    </msub>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo>/</mo>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>φ</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                    </msub>
+                </mrow>
+            </math>
+            Surfaces in the n<sup>th</sup> position are shown below:
+        </p>
+
+        <img src="files/vibrations4.png" alt="Surface" width="300" class="center">
+
+        <p>In each position n resulting from the discretization of gear rotation angles, between the surfaces, there is
+            a certain distance measured along the arc with a radius
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>R</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>M</mi>
+                        <mn>2</mn>
+                        <mi>c</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>=</mo>
+                <msqrt>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>f</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                    <mo>+</mo>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>f</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                </msqrt>
+            </math>
+            corresponding to the length of arc
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>k</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>k</mi>
+                            <mi>o</mi>
+                            <mi>r</mi>
+                        </mrow>
+                    </msub>
+                </mrow>
+                <mo>=</mo>
+                <mover>
+                    <mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>M</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>1</mn>
+                                </mrow>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>M</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>2</mn>
+                                </mrow>
+                            </msub>
+                        </mrow>
+                    </mrow>
+                    <mo>⌢</mo>
+                </mover>
+            </math>
+            where M<sub>1</sub> is a point on surface Σ<sub>1</sub> with coordinates
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>z</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>1</mn>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+            </math>
+            , and M<sub>2</sub> a point on surface Σ<sub>2</sub> with coordinates
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>z</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>1</mn>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>=</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>M</mi>
+                        <mn>2</mn>
+                        <mi>c</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+            </math>
+            . Angle φ<sub>kor</sub> by which surface Σ<sub>1</sub> would have to be rotated for points M<sub>1</sub> and
+            M<sub>2</sub> to overlap is the central angle corresponding to the length of the arc
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>k</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>k</mi>
+                            <mi>o</mi>
+                            <mi>r</mi>
+                        </mrow>
+                    </msub>
+                </mrow>
+                <mo>=</mo>
+                <mover>
+                    <mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>M</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>1</mn>
+                                </mrow>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>M</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>2</mn>
+                                </mrow>
+                            </msub>
+                        </mrow>
+                    </mrow>
+                    <mo>⌢</mo>
+                </mover>
+            </math>
+            and can be determined based on coordinates as:
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mrow class="MJX-TeXAtom-ORD">
+                <msub>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>k</mi>
+                        <mi>o</mi>
+                        <mi>r</mi>
+                    </mrow>
+                </msub>
+            </mrow>
+            <mo>=</mo>
+            <mn>2</mn>
+            <mi>arcsin</mi>
+            <mo>⁡</mo>
+            <mrow>
+                <mo>(</mo>
+                <mfrac>
+                    <msqrt>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msup>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>f</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>M</mi>
+                                            <mn>2</mn>
+                                            <mi>c</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>f</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>2</mn>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                        <mo>+</mo>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msup>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>f</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>M</mi>
+                                            <mn>2</mn>
+                                            <mi>c</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>f</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mn>2</mn>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                    </msqrt>
+                    <mrow>
+                        <mn>2</mn>
+                        <msubsup>
+                            <mi>R</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>M</mi>
+                                <mn>2</mn>
+                                <mi>c</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>f</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                    </mrow>
+                </mfrac>
+                <mo>)</mo>
+            </mrow>
+            <mo>.</mo>
+        </math>
+
+        <p>The distance between flank surfaces is expressed as:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mrow class="MJX-TeXAtom-ORD">
+                <msub>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>k</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>k</mi>
+                        <mi>o</mi>
+                        <mi>r</mi>
+                    </mrow>
+                </msub>
+            </mrow>
+            <mo>=</mo>
+            <msubsup>
+                <mi>R</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>M</mi>
+                    <mn>2</mn>
+                    <mi>c</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mrow class="MJX-TeXAtom-ORD">
+                <msub>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>k</mi>
+                        <mi>o</mi>
+                        <mi>r</mi>
+                    </mrow>
+                </msub>
+            </mrow>
+        </math>
+
+        <p>In each nth position, there is a certain minimum distance
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>k</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>k</mi>
+                        <mi>o</mi>
+                        <mi>r</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>m</mi>
+                        <mi>i</mi>
+                        <mi>n</mi>
+                    </mrow>
+                </msubsup>
+            </math>
+            with its corresponding angle
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>φ</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>k</mi>
+                        <mi>o</mi>
+                        <mi>r</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>m</mi>
+                        <mi>i</mi>
+                        <mi>n</mi>
+                    </mrow>
+                </msubsup>
+            </math>
+            The relationship between minimum angle
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>φ</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>k</mi>
+                        <mi>o</mi>
+                        <mi>r</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>m</mi>
+                        <mi>i</mi>
+                        <mi>n</mi>
+                    </mrow>
+                </msubsup>
+            </math>
+            and gear rotation angle φ2 determined discretely for all n positions constitutes the transmission error. The
+            greatest challenge of the method is to specify the location of point M2 on surface Σ2 that corresponds to
+            the coordinate
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>z</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>1</mn>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>=</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>M</mi>
+                        <mn>2</mn>
+                        <mi>c</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+            </math>
+            and radius
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>R</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>M</mi>
+                        <mn>2</mn>
+                        <mi>c</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+            </math>
+            . The issue may be easily solved by interpolation in a cylindrical coordinate system
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>θ</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                        <mi>c</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>,</mo>
+                <msubsup>
+                    <mi>R</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                        <mi>c</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>,</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+            </math>
+        </p>
+
+        <h2>Transmission error excitation</h2>
+        <p>The interpolated values of deviations were used to obtain the transmission error according to the method
+            described in previous section. The resulting transmission error (Fig. a) and its normalized amplitude
+            spectrums (Fig. b, c) are presented below:</p>
+
+        <img src="files/vibrations5.png" alt="Surface" class="img2">
+
+        <p>The amplitude spectrum was obtained with the aid of a fast Fourier transform (FFT) of the time signal of
+            transmission error x<sub>te</sub>, and its acceleration
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>a</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>t</mi>
+                            <mi>e</mi>
+                        </mrow>
+                    </msub>
+                </mrow>
+                <mo>=</mo>
+                <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                        <mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msup>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mtext>d</mtext>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msup>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>x</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>t</mi>
+                                        <mi>e</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                        </mrow>
+                        <mrow>
+                            <mtext>d</mtext>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msup>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msup>
+                            </mrow>
+                        </mrow>
+                    </mfrac>
+                </mstyle>
+            </math>
+            :
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mi mathvariant="normal">A</mi>
+            <mo>⁡</mo>
+            <mo stretchy="false">(</mo>
+            <mi>x</mi>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <mfrac>
+                <mn>1</mn>
+                <mi>N</mi>
+            </mfrac>
+            <msqrt>
+                <mi>Re</mi>
+                <mo>⁡</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msup>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>FFT</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>x</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                    </msup>
+                </mrow>
+                <mo>+</mo>
+                <mi>Im</mi>
+                <mo>⁡</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msup>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>FFT</mi>
+                                    <mo>⁡</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>x</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mn>2</mn>
+                        </mrow>
+                    </msup>
+                </mrow>
+            </msqrt>
+        </math>
+
+        <p>where FFT(x) is the fast Fourier transform of signal x, x is a time signal (x<sub>te</sub> or a<sub>te</sub>),
+            Re denotes the real while Im the imaginary part of a complex number and N is the number of signal samples.
+            Next, the amplitude spectrum was normalized according to the equation:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mrow class="MJX-TeXAtom-ORD">
+                <msub>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi mathvariant="normal">A</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>n</mi>
+                        <mi>o</mi>
+                        <mi>r</mi>
+                        <mi>m</mi>
+                    </mrow>
+                </msub>
+            </mrow>
+            <mo stretchy="false">(</mo>
+            <mi>x</mi>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">A</mi>
+                    <mo>⁡</mo>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>−</mo>
+                    <mo movablelimits="true" form="prefix">max</mo>
+                    <mo stretchy="false">(</mo>
+                    <mtext>A</mtext>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+                <mrow>
+                    <mo movablelimits="true" form="prefix">max</mo>
+                    <mo stretchy="false">(</mo>
+                    <mtext>A</mtext>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo stretchy="false">)</mo>
+                    <mo>−</mo>
+                    <mo movablelimits="true" form="prefix">min</mo>
+                    <mo stretchy="false">(</mo>
+                    <mi mathvariant="normal">A</mi>
+                    <mo>⁡</mo>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </mfrac>
+        </math>
+
+        <p>The maximum value of transmission error was about 100μm (Fig. a). It should be noted that this transmission
+            error results only from topography errors (profile and helix deviations). Other factors influencing its
+            value such as pitch errors, deflections etc. were not included. Increased amplitudes of transmission error
+            are observed below frequency of 2000Hz (Fig. b), while in case of acceleration they are present at higher
+            order of harmonics (Fig. c).</p>
+
+        <h2>Correlation with measurement data</h2>
+
+        <p>The vibrations were measured by piezoelectric sensor mounted on gear case, in a vertical direction
+            (perpendicular to the shafts plane). Measurements were taken several times through the whole operating time
+            of 10h (which correspond to 1.5∙10<sup>6</sup> number of cycles of pinion) with sampling frequency 25kHz.
+            This results in acquired acceleration time signal with 225000 samples a part of is presented on Fig. a
+            below. While gearbox operation (2280rpm, 455Nm - on pinion) no sign of failure was detected. Amplitude
+            spectrum of gear case acceleration signal (Fig. b) was calculated as in previous section.</p>
+
+        <img src="files/vibrations6.png" alt="Surface" class="img2">
+
+
+        <p>In order to compare the results of tooth contact analysis with actual vibrations as a measure of similarity
+            the cross power spectral density was chosen:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mi>CSD</mi>
+            <mo>⁡</mo>
+            <mo stretchy="false">(</mo>
+            <mi>x</mi>
+            <mo>,</mo>
+            <mi>y</mi>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <mi mathvariant="normal">W</mi>
+            <mo>⁡</mo>
+            <mo stretchy="false">(</mo>
+            <mi>x</mi>
+            <mo>∗</mo>
+            <mi>y</mi>
+            <mo stretchy="false">)</mo>
+        </math>
+
+        <p>where W denotes the power spectral density estimate according to Welch’s approach with Hann window function,
+            x and y are a normalized time signals and x*y is a cross-correlation of time signals x and y. Results of
+            calculations were shown on Fig. below:</p>
+
+        <img src="files/vibrations7.png" alt="Surface" class="img2">
+
+
+        <h2>Summary</h2>
+
+        <p>High peaks can be observed within a cross-spectral density which means that the transmission error signal and its acceleration are periodically correlated with the gear case acceleration signal. The greatest power of transmission error is shared with gear case acceleration within the first three orders of harmonics - f<sub>m</sub>, 2f<sub>m</sub>, 3f<sub>m</sub>. The strongest correlation in the case of transmission error acceleration is observed within 2f<sub>m</sub> frequency. High peaks occurred also at f<sub>m</sub>, and  5f<sub>m</sub>. Based on the obtained results the following conclusions can be drawn:<p>
+        <ul>
+            <li>surface deviations have a significant influence on gearbox vibrations,
+            </li>
+            <li>in order to minimize the vibration excitation the transmission error resulting from surface deviations should be minimized,
+            </li>
+            <li>particular care must be taken on transmission error acceleration if higher-order harmonics are under consideration.
+            </li>
+        </ul>
+
+        <section class='FlexContainer'>
+        <div align="left">
+            <a href="index.html">&#8592; Back to projects</a>
+        </div>
+        <div align="right">
+            <a href="#">&#8593; Back on top</a>
+        </div>
+        </section>
+
+    </article>
+</section>
+
+</body>
+</html>
+

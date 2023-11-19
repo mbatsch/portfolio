@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Michał Batsch Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Stylesheet" type="text/css" href="styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<section>
+    <nav>
+        <ul>
+            <img src="files/photo1.png" alt="Photo" class="img1">
+            <h1>Michał Batsch, PhD, Eng.</h1>
+            <h2>About me</h2>
+            <p><info class="info"></info></p>
+            <li><i class="fa fa-download"></i>&nbsp<a href="CV_Michal_Batsch.pdf" target="_blank">CV download</a></li>
+            <h2>Contact</h2>
+            <li><a href="https://www.linkedin.com/in/michal-batsch">LinkedIn</a></li>
+            <li><a href="https://www.researchgate.net/profile/Michal-Batsch-2">ResearchGate</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <a href="index.html">&#8592; Back to projects</a>
+        <h1>Image processing algorithm for evaluation of the roundness of small objects</h1>
+        <h2>Used tools and packages</h2>
+        <span>Matlab</span> <span>Image Processing Toolbox</span> <span>Optimization Toolbox</span>
+        <h2>Introduction</h2>
+
+        <p>This was the part of larger project in which team under my lead was responsible for the design of a system
+            for automatic control of small object – copper seals for fuel and gas installations. In the designed
+            automatic control system machine vision was used among others to evaluate the roundness of manufactured
+            sealings and their prefabricated material. </p>
+
+
+        <h2>Methods</h2>
+
+        <p>To overcome the lightning problems resulting from shaded rounded edges the two-way algorithm based on image
+            segmentation was proposed:</p>
+        <img src="files/roundness1.png" alt="Algorithm" class="img2">
+        <p> The algorithm starts by reading the captured image (2). Next, it is converted to a binary image with the aid
+            of a threshold value greater than that obtained by Otsu’s method (3). After noise removal (4) empty spaces
+            are filled by morphological operations (5). Another step is to remove noise once again (6). The original
+            image is again converted to binary however the value of the threshold is here less than obtained by Otsu’s
+            method (7). Next, it is inverted (8), noise is removed (9), dilated and eroded (10). Such images are then
+            summed (11), dilated and eroded (12). These operations are responsible for hole filling and smoothing the
+            edge which represents the profile of the measured object. The boundary of the obtained area after scaling
+            can be exported as a set of points x<sub>i</sub>, y<sub>i</sub> (where i=1,2,…,n) for further roundness
+            evaluation. In this purpose, measured points are approximated by a circle obtained in the least square
+            sense. It reduces to an optimization problem in the form:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <munderover>
+                <mo movablelimits="false">∑</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>i</mi>
+                    <mo>=</mo>
+                    <mn>1</mn>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>n</mi>
+                </mrow>
+            </munderover>
+            <mrow class="MJX-TeXAtom-ORD">
+                <msubsup>
+                    <mi>f</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>i</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                    </mrow>
+                </msubsup>
+                <mrow>
+                    <mo>(</mo>
+                    <mi>a</mi>
+                    <mo>)</mo>
+                </mrow>
+                <mo>=</mo>
+                <mtext>min</mtext>
+            </mrow>
+        </math>
+
+
+        <p>where f<sub>i</sub>(<b>a</b>)=(x<sub>i</sub>-a<sub>2</sub>)<sup>2</sup>+(y<sub>i</sub>-a<sub>2</sub>)<sup>2</sup>-a<sub>3</sub><sup>2</sup> is an error function, <b>a</b>={a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>} is a vector of a parameters of
+            searched circle, while a<sub>1</sub>, a<sub>2</sub> are coordinates of the center, and a<sub>3</sub> is its
+            radius. The solution can be found numerically by „trust-region” or “Levenberg- Marquardt” algorithms.
+            Roundness error is therefore obtained as the difference between the maximum and minimum distance of measured
+            points from the center of circle:
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mi>t</mi>
+            <mo>=</mo>
+            <mtext>max</mtext>
+            <mrow>
+                <mo>(</mo>
+                <msqrt>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>x</mi>
+                                                </mrow>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>i</mi>
+                                                </mrow>
+                                            </msub>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>a</mi>
+                                                </mrow>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mn>1</mn>
+                                                </mrow>
+                                            </msub>
+                                        </mrow>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                    <mo>+</mo>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>y</mi>
+                                                </mrow>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>i</mi>
+                                                </mrow>
+                                            </msub>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>a</mi>
+                                                </mrow>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mn>2</mn>
+                                                </mrow>
+                                            </msub>
+                                        </mrow>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                </msqrt>
+                <mo>)</mo>
+            </mrow>
+            <mo>−</mo>
+            <mtext>min</mtext>
+            <mrow>
+                <mo>(</mo>
+                <msqrt>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>x</mi>
+                                                </mrow>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>i</mi>
+                                                </mrow>
+                                            </msub>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>a</mi>
+                                                </mrow>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mn>1</mn>
+                                                </mrow>
+                                            </msub>
+                                        </mrow>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                    <mo>+</mo>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msup>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>y</mi>
+                                                </mrow>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>i</mi>
+                                                </mrow>
+                                            </msub>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mi>a</mi>
+                                                </mrow>
+                                                <mrow class="MJX-TeXAtom-ORD">
+                                                    <mn>2</mn>
+                                                </mrow>
+                                            </msub>
+                                        </mrow>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                </msqrt>
+                <mo>)</mo>
+            </mrow>
+        </math>
+
+        <h2>Results</h2>
+        <section class='FlexContainer'>
+        <div>
+            <img src="files/roundness2.png" alt="Sample results" class="img2">
+        </div>
+        <div>
+            <img src="files/roundness3.png" alt="Sample results" class="img2">
+        </div>
+        </section>
+        <h2>Summary</h2>
+
+        <ul>
+            <li>Image processing time allowed for quick inspection (2 parts per second).
+            </li>
+            <li>Machine vision system components were properly chosen.
+            </li>
+        </ul>
+
+        <section class='FlexContainer'>
+        <div align="left">
+            <a href="index.html">&#8592; Back to projects</a>
+        </div>
+        <div align="right">
+            <a href="#">&#8593; Back on top</a>
+        </div>
+        </section>
+    </article>
+</section>
+
+</body>
+</html>
+

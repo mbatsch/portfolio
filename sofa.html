@@ -1,0 +1,3935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Michał Batsch Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Stylesheet" type="text/css" href="styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<section>
+    <nav>
+        <ul>
+            <img src="files/photo1.png" alt="Photo" class="img1">
+            <h1>Michał Batsch, PhD, Eng.</h1>
+            <h2>About me</h2>
+            <p><info class="info"></info></p>
+            <li><i class="fa fa-download"></i>&nbsp<a href="CV_Michal_Batsch.pdf" target="_blank">CV download</a></li>
+            <h2>Contact</h2>
+            <li><a href="https://www.linkedin.com/in/michal-batsch">LinkedIn</a></li>
+            <li><a href="https://www.researchgate.net/profile/Michal-Batsch-2">ResearchGate</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <a href="index.html">&#8592; Back to projects</a>
+        <h1>What is the optimal shape of sofa?</h1>
+        <h2>Used tools and packages</h2>
+        <span>Matlab</span> <span>Differential geometry</span> <span>Optimization Toolbox</span>
+
+        <h2>Introduction</h2>
+
+        <p>This project results from my interest in math. What is the largest area of region that can be moved through a
+            ninety-degree corner in a hallway of unit width? - this problem called "the moving sofa problem" was
+            formulated for the first time by Moser and till now has not been solved fully. The essence is to find such a
+            shape of the maximum area that can be moved around a ninety-degree corner while a planar case is under
+            consideration. The simplicity of the formulation of the problem, which allows anyone to understand it, and
+            advanced calculation techniques used for analyses have retained the scientific interest of researchers until
+            today. One of the first proposed solutions was a sofa built from circular arcs and straight lines, the area
+            of which was A<sub>H</sub>=&#960;/2+2/&#960;=2.2074... . However, this solution was not optimal, as proved
+            by Gerver, who proposed a sofa with the area A<sub>G</sub>=2.2195316688... constructed from 18 analytically
+            defined curves. This solution was probably the optimum one, though it has not yet been proven globally. Here
+            I give the method that may be used to analyze this problem and to construct proof that indeed Gerver sofa is
+            the optimum one.</p>
+
+        <h2>Sofa generation</h2>
+
+        <p>
+            Fixed coordinate system h was established, in which the region of hallway
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mi>H</mi>
+                <mo>=</mo>
+                <mo fence="false" stretchy="false">{</mo>
+                <mo stretchy="false">(</mo>
+                <msub>
+                    <mi>x</mi>
+                    <mi>h</mi>
+                </msub>
+                <mo>,</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>h</mi>
+                </msub>
+                <mo stretchy="false">)</mo>
+                <mo>∈</mo>
+                <msup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi mathvariant="double-struck">R</mi>
+                    </mrow>
+                    <mn>2</mn>
+                </msup>
+                <mo>:</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>h</mi>
+                </msub>
+                <mo>≤</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">|</mo>
+                </mrow>
+                <msub>
+                    <mi>x</mi>
+                    <mi>h</mi>
+                </msub>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">|</mo>
+                </mrow>
+                <mo>+</mo>
+                <msqrt>
+                    <mn>2</mn>
+                </msqrt>
+                <mo>∧</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>h</mi>
+                </msub>
+                <mo>≥</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">|</mo>
+                </mrow>
+                <msub>
+                    <mi>x</mi>
+                    <mi>h</mi>
+                </msub>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">|</mo>
+                </mrow>
+                <mo fence="false" stretchy="false">}</mo>
+            </math>
+            is bounded by two curves parametrised as
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mover>
+                                <mi>r</mi>
+                                <mo stretchy="false">¯</mo>
+                            </mover>
+                        </mrow>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>u</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>h</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>=</mo>
+                <msup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">[</mo>
+                        <msubsup>
+                            <mi>x</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>u</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>h</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </msubsup>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>u</mi>
+                        </msub>
+                        <mo stretchy="false">)</mo>
+                        <mo>,</mo>
+                        <mtext>&nbsp;</mtext>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>u</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>h</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </msubsup>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>u</mi>
+                        </msub>
+                        <mo stretchy="false">)</mo>
+                        <mo stretchy="false">]</mo>
+                    </mrow>
+                    <mi>T</mi>
+                </msup>
+            </math>
+            and
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mover>
+                                <mi>r</mi>
+                                <mo stretchy="false">¯</mo>
+                            </mover>
+                        </mrow>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>l</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>h</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>=</mo>
+                <msup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">[</mo>
+                        <msubsup>
+                            <mi>x</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>l</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>h</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </msubsup>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>l</mi>
+                        </msub>
+                        <mo stretchy="false">)</mo>
+                        <mo>,</mo>
+                        <mtext>&nbsp;</mtext>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>l</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>h</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </msubsup>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>l</mi>
+                        </msub>
+                        <mo stretchy="false">)</mo>
+                        <mo stretchy="false">]</mo>
+                    </mrow>
+                    <mi>T</mi>
+                </msup>
+            </math>
+            (Fig. below)
+        </p>
+        <img src="files/sofa1.png" alt="Hallway" width="400" class="center">
+
+        <p> Position vectors of the upper and lower boundaries of the hallway are expressed by:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mover>
+                            <mi>r</mi>
+                            <mo stretchy="false">¯</mo>
+                        </mover>
+                    </mrow>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>u</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>h</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>u</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable columnalign="center center" rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>u</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>h</mi>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>y</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>u</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>h</mi>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable columnalign="center center" rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msub>
+                                <mi>t</mi>
+                                <mi>u</mi>
+                            </msub>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">|</mo>
+                            </mrow>
+                            <msub>
+                                <mi>t</mi>
+                                <mi>u</mi>
+                            </msub>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">|</mo>
+                            </mrow>
+                            <mo>+</mo>
+                            <msqrt>
+                                <mn>2</mn>
+                            </msqrt>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mover>
+                            <mi>r</mi>
+                            <mo stretchy="false">¯</mo>
+                        </mover>
+                    </mrow>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>l</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>h</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>l</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable columnalign="center center" rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>l</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>h</mi>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>y</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>l</mi>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>h</mi>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable columnalign="center center" rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msub>
+                                <mi>t</mi>
+                                <mi>l</mi>
+                            </msub>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">|</mo>
+                            </mrow>
+                            <msub>
+                                <mi>t</mi>
+                                <mi>l</mi>
+                            </msub>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">|</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <p> where t<sub>u</sub> i t<sub>l</sub> are the hallway's parameters. Moreover, coordinate system s connected
+            with the sofa moves along the trajectory defined by a parametric curve in the form of
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mover>
+                                <mi>r</mi>
+                                <mo stretchy="false">¯</mo>
+                            </mover>
+                        </mrow>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>t</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>h</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>=</mo>
+                <msup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">[</mo>
+                        <msubsup>
+                            <mi>x</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>t</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>h</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </msubsup>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                        <mo stretchy="false">)</mo>
+                        <mtext>&nbsp;</mtext>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>t</mi>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>h</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </msubsup>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                        <mo stretchy="false">)</mo>
+                        <mo stretchy="false">]</mo>
+                    </mrow>
+                    <mi>T</mi>
+                </msup>
+            </math>
+            and rotates by
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mi>φ</mi>
+                <mo stretchy="false">(</mo>
+                <msub>
+                    <mi>t</mi>
+                    <mi>t</mi>
+                </msub>
+                <mo stretchy="false">)</mo>
+            </math>
+            , where t<sub>t</sub> is the parameter of the path of movement. In order to express the hallway's boundaries
+            in the coordinate system connected with the sofa, we may use:
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>u</mi>
+                    <mo>,</mo>
+                    <mi>l</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>φ</mi>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>φ</mi>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mo>−</mo>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>φ</mi>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>φ</mi>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+            <mo>⋅</mo>
+            <mrow>
+                <mo>(</mo>
+                <mrow>
+                    <mrow>
+                        <mo>[</mo>
+                        <mtable rowspacing="4pt" columnspacing="1em">
+                            <mtr>
+                                <mtd>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>u</mi>
+                                            <mo>,</mo>
+                                            <mi>l</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>u</mi>
+                                            <mo>,</mo>
+                                            <mi>l</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                    </mrow>
+                    <mo>+</mo>
+                    <mrow>
+                        <mo>[</mo>
+                        <mtable rowspacing="4pt" columnspacing="1em">
+                            <mtr>
+                                <mtd>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>t</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mo>−</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>t</mi>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                    </mrow>
+                </mrow>
+                <mo>)</mo>
+            </mrow>
+        </math>
+
+        <p>where indexes u and l refer to the upper and lower boundaries of the hallway, respectively. This equation
+            describes one parameter family of curves with parameter t<sub>t</sub>. After transformation, we obtain:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>u</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mi>u</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>y</mi>
+                                <mi>u</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>+</mo>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mi>u</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>+</mo>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mi>u</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>+</mo>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mi>u</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>−</mo>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mi>u</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>l</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mi>l</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>y</mi>
+                                <mi>l</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>+</mo>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mi>l</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>+</mo>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mi>l</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>+</mo>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mi>l</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>−</mo>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mi>l</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <p>The necessary condition for the existence of envelopes expressed as the perpendicularity of the vector normal
+            and a derivative of the vector of a family of curves with respect to its parameter takes the form of:</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msub>
+                <mi>f</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>u</mi>
+                </mrow>
+            </msub>
+            <mrow>
+                <mo>(</mo>
+                <mrow>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>u</mi>
+                    </msub>
+                    <mo>,</mo>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>t</mi>
+                    </msub>
+                </mrow>
+                <mo>)</mo>
+            </mrow>
+            <mo>=</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>u</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>s</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>t</mi>
+                    </msub>
+                </mrow>
+            </mfrac>
+            <mo>⋅</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>u</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>s</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>u</mi>
+                    </msub>
+                </mrow>
+            </mfrac>
+            <mo>−</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>u</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>s</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>u</mi>
+                    </msub>
+                </mrow>
+            </mfrac>
+            <mo>⋅</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>u</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>s</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>t</mi>
+                    </msub>
+                </mrow>
+            </mfrac>
+            <mo>=</mo>
+            <mn>0</mn>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msub>
+                <mi>f</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>l</mi>
+                </mrow>
+            </msub>
+            <mrow>
+                <mo>(</mo>
+                <mrow>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>l</mi>
+                    </msub>
+                    <mo>,</mo>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>t</mi>
+                    </msub>
+                </mrow>
+                <mo>)</mo>
+            </mrow>
+            <mo>=</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>l</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>s</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>t</mi>
+                    </msub>
+                </mrow>
+            </mfrac>
+            <mo>⋅</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>l</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>s</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>l</mi>
+                    </msub>
+                </mrow>
+            </mfrac>
+            <mo>−</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>l</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>s</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>l</mi>
+                    </msub>
+                </mrow>
+            </mfrac>
+            <mo>⋅</mo>
+            <mfrac>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mi>l</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>s</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mrow>
+                    <mi mathvariant="normal">∂</mi>
+                    <msub>
+                        <mi>t</mi>
+                        <mi>t</mi>
+                    </msub>
+                </mrow>
+            </mfrac>
+            <mo>=</mo>
+            <mn>0</mn>
+        </math>
+
+        <p> calculating the partial derivatives and putting them into above equations, we arrive at the envelopes:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msub>
+                <mi>f</mi>
+                <mi>u</mi>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>u</mi>
+            </msub>
+            <mo>,</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msubsup>
+                            <mi>x</mi>
+                            <mi>t</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>h</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mo>±</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mi>t</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>h</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mo>∓</mo>
+            <msqrt>
+                <mn>2</mn>
+            </msqrt>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mo>−</mo>
+            <mn>2</mn>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <msub>
+                <mi>t</mi>
+                <mi>u</mi>
+            </msub>
+            <mo>−</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <msubsup>
+                <mi>x</mi>
+                <mi>t</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>h</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>±</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <msubsup>
+                <mi>y</mi>
+                <mi>t</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>h</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mn>0</mn>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msub>
+                <mi>f</mi>
+                <mi>l</mi>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>l</mi>
+            </msub>
+            <mo>,</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msubsup>
+                            <mi>x</mi>
+                            <mi>t</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>h</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mo>±</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mi>t</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>h</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mo>−</mo>
+            <mn>2</mn>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <msub>
+                <mi>t</mi>
+                <mi>l</mi>
+            </msub>
+            <mo>−</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <msubsup>
+                <mi>x</mi>
+                <mi>t</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>h</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>±</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <mi>φ</mi>
+                    </mrow>
+                    <mrow>
+                        <mi mathvariant="normal">∂</mi>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>t</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <msubsup>
+                <mi>y</mi>
+                <mi>t</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>h</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mn>0</mn>
+        </math>
+
+        <p>wherein the upper sign stands for the right-hand side and the lower sign stands for the left-hand side. The
+            solutions to above equations, with the assumption that
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mi mathvariant="normal">∂</mi>
+                <mi>φ</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo>/</mo>
+                </mrow>
+                <mi mathvariant="normal">∂</mi>
+                <msub>
+                    <mi>t</mi>
+                    <mi>t</mi>
+                </msub>
+                <mo>≠</mo>
+                <mn>0</mn>
+            </math>
+            , are:
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msub>
+                <mi>t</mi>
+                <mi>u</mi>
+            </msub>
+            <mo>=</mo>
+            <mo>±</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mn>1</mn>
+                    <mrow>
+                        <mn>2</mn>
+                        <mstyle displaystyle="true" scriptlevel="0">
+                            <mfrac>
+                                <mrow>
+                                    <mi mathvariant="normal">∂</mi>
+                                    <mi>φ</mi>
+                                </mrow>
+                                <mrow>
+                                    <mi mathvariant="normal">∂</mi>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mi>t</mi>
+                                    </msub>
+                                </mrow>
+                            </mfrac>
+                        </mstyle>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mrow>
+                <mo>(</mo>
+                <mrow>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <mo>±</mo>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <mo>−</mo>
+                    <msqrt>
+                        <mn>2</mn>
+                    </msqrt>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mi>φ</mi>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <mo>∓</mo>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mi>φ</mi>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mi>t</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                    <mo>+</mo>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mi>φ</mi>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mi>t</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mo>)</mo>
+            </mrow>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msub>
+                <mi>t</mi>
+                <mi>l</mi>
+            </msub>
+            <mo>=</mo>
+            <mo>±</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mn>1</mn>
+                    <mrow>
+                        <mn>2</mn>
+                        <mstyle displaystyle="true" scriptlevel="0">
+                            <mfrac>
+                                <mrow>
+                                    <mi mathvariant="normal">∂</mi>
+                                    <mi>φ</mi>
+                                </mrow>
+                                <mrow>
+                                    <mi mathvariant="normal">∂</mi>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mi>t</mi>
+                                    </msub>
+                                </mrow>
+                            </mfrac>
+                        </mstyle>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mrow>
+                <mo>(</mo>
+                <mrow>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <mo>±</mo>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <mo>∓</mo>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mi>φ</mi>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mi>t</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                    <mo>+</mo>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                        <mfrac>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <mi>φ</mi>
+                            </mrow>
+                            <mrow>
+                                <mi mathvariant="normal">∂</mi>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mi>t</mi>
+                                </msub>
+                            </mrow>
+                        </mfrac>
+                    </mstyle>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mi>t</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mo>)</mo>
+            </mrow>
+        </math>
+
+        <p>Taking into account the above results in family of curves, we obtain the envelopes of the consecutive
+            positions of the hallway boundaries in the sofa's coordinate system:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>s</mi>
+                    <mi>u</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>u</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>u</mi>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>,</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>s</mi>
+                    <mi>l</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>l</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>l</mi>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>,</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+        </math>
+
+        <p>The above equations stand while the derivatives
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mi mathvariant="normal">∂</mi>
+                <msubsup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mover>
+                            <mi>r</mi>
+                            <mo stretchy="false">¯</mo>
+                        </mover>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>u</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>h</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo>/</mo>
+                </mrow>
+                <mi mathvariant="normal">∂</mi>
+                <msub>
+                    <mi>t</mi>
+                    <mi>u</mi>
+                </msub>
+            </math>
+            and
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mi mathvariant="normal">∂</mi>
+                <msubsup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mover>
+                            <mi>r</mi>
+                            <mo stretchy="false">¯</mo>
+                        </mover>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>l</mi>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>h</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo>/</mo>
+                </mrow>
+                <mi mathvariant="normal">∂</mi>
+                <msub>
+                    <mi>t</mi>
+                    <mi>l</mi>
+                </msub>
+            </math>
+            exist. Otherwise, as for point t<sub>u</sub>=0, the envelope can be represented by the curve defined as:
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>s</mi>
+                    <mi>c</mi>
+                    <mi>u</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>u</mi>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo stretchy="false">(</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>u</mi>
+            </msub>
+            <mo>=</mo>
+            <mn>0</mn>
+            <mo>,</mo>
+            <msub>
+                <mi>t</mi>
+                <mi>t</mi>
+            </msub>
+            <mo stretchy="false">)</mo>
+        </math>
+
+        <p>Assuming that the sofa's path of movement and angle of rotation are given in a discrete way as a set of
+            points
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>x</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msub>
+                            <mi>t</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>h</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+            </math>
+            ,
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msubsup>
+                    <mi>y</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msub>
+                            <mi>t</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>h</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+            </math>
+            and
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <msub>
+                    <mi>φ</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>i</mi>
+                    </mrow>
+                </msub>
+            </math>
+            , where i=1,2,...,n, and taking finite differences quotients instead of derivatives, solutions to envelope
+            equations can be expressed as:
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msub>
+                <mi>t</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mi>u</mi>
+                        <mi>i</mi>
+                    </msub>
+                </mrow>
+            </msub>
+            <mo>=</mo>
+            <mo>±</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mn>1</mn>
+                    <mrow>
+                        <mn>2</mn>
+                        <mi mathvariant="normal">Δ</mi>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mrow>
+                <mo>(</mo>
+                <mrow>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                    <mo>±</mo>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                    <mo>−</mo>
+                    <msqrt>
+                        <mn>2</mn>
+                    </msqrt>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msub>
+                        <mi>φ</mi>
+                        <mi>i</mi>
+                    </msub>
+                    <mo>∓</mo>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msub>
+                        <mi>φ</mi>
+                        <mi>i</mi>
+                    </msub>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                    <mo>+</mo>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msub>
+                        <mi>φ</mi>
+                        <mi>i</mi>
+                    </msub>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mo>)</mo>
+            </mrow>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msub>
+                <mi>t</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <msub>
+                        <mi>l</mi>
+                        <mi>i</mi>
+                    </msub>
+                </mrow>
+            </msub>
+            <mo>=</mo>
+            <mo>±</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+                <mfrac>
+                    <mn>1</mn>
+                    <mrow>
+                        <mn>2</mn>
+                        <mi mathvariant="normal">Δ</mi>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mfrac>
+            </mstyle>
+            <mrow>
+                <mo>(</mo>
+                <mrow>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                    <mo>±</mo>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                    <mo>∓</mo>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msub>
+                        <mi>φ</mi>
+                        <mi>i</mi>
+                    </msub>
+                    <msubsup>
+                        <mi>x</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                    <mo>+</mo>
+                    <mi mathvariant="normal">Δ</mi>
+                    <msub>
+                        <mi>φ</mi>
+                        <mi>i</mi>
+                    </msub>
+                    <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mo stretchy="false">(</mo>
+                            <mi>h</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </msubsup>
+                </mrow>
+                <mo>)</mo>
+            </mrow>
+        </math>
+
+        <p>The discrete representation of curves which bound the region of sofa are therefore established as:</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>s</mi>
+                    <msub>
+                        <mi>u</mi>
+                        <mi>i</mi>
+                    </msub>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>s</mi>
+                                    <msub>
+                                        <mi>u</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>y</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>s</mi>
+                                    <msub>
+                                        <mi>u</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>+</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>u</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>+</mo>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>u</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                    </msub>
+                                    <mo>+</mo>
+                                    <msqrt>
+                                        <mn>2</mn>
+                                    </msqrt>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>+</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>u</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>−</mo>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>±</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>u</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                    </msub>
+                                    <mo>+</mo>
+                                    <msqrt>
+                                        <mn>2</mn>
+                                    </msqrt>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>s</mi>
+                    <msub>
+                        <mi>l</mi>
+                        <mi>i</mi>
+                    </msub>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>s</mi>
+                                    <msub>
+                                        <mi>l</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>y</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>s</mi>
+                                    <msub>
+                                        <mi>l</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>+</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>l</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>+</mo>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>∓</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>l</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>+</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>l</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>−</mo>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <mi>φ</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>∓</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>l</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <msubsup>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mover>
+                        <mi>r</mi>
+                        <mo stretchy="false">¯</mo>
+                    </mover>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mi>s</mi>
+                    <mi>c</mi>
+                    <msub>
+                        <mi>u</mi>
+                        <mi>i</mi>
+                    </msub>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo stretchy="false">)</mo>
+                </mrow>
+            </msubsup>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>s</mi>
+                                    <mi>c</mi>
+                                    <msub>
+                                        <mi>u</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>y</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mi>s</mi>
+                                    <mi>c</mi>
+                                    <msub>
+                                        <mi>u</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>s</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+            <mo>=</mo>
+            <mrow>
+                <mo>[</mo>
+                <mtable rowspacing="4pt" columnspacing="1em">
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>h</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mo>+</mo>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <msqrt>
+                                        <mn>2</mn>
+                                    </msqrt>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <msubsup>
+                                <mi>x</mi>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>h</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msubsup>
+                            <mi>sin</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mo>−</mo>
+                            <mi>cos</mi>
+                            <mo>⁡</mo>
+                            <msub>
+                                <mi>φ</mi>
+                                <mi>i</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <msub>
+                                                <mi>t</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>h</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msubsup>
+                                    <mo>−</mo>
+                                    <msqrt>
+                                        <mn>2</mn>
+                                    </msqrt>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </mrow>
+        </math>
+
+        <p>Finally, it can be said that the region of sofa is
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mi>S</mi>
+                <mo>=</mo>
+                <mo fence="false" stretchy="false">{</mo>
+                <mo stretchy="false">(</mo>
+                <msub>
+                    <mi>x</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>,</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo stretchy="false">)</mo>
+                <mo>∈</mo>
+                <msup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi mathvariant="double-struck">R</mi>
+                    </mrow>
+                    <mn>2</mn>
+                </msup>
+                <mo>:</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≤</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>s</mi>
+                        <msub>
+                            <mi>u</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>∧</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≥</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>s</mi>
+                        <msub>
+                            <mi>l</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>∧</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≤</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi>s</mi>
+                        <mi>c</mi>
+                        <msub>
+                            <mi>u</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo fence="false" stretchy="false">}</mo>
+            </math>
+            , where it should be within the region limited by the initial and the final position of the hallway
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <mi>S</mi>
+                <mo>⊆</mo>
+                <mi>B</mi>
+                <mo>=</mo>
+                <mo fence="false" stretchy="false">{</mo>
+                <mo stretchy="false">(</mo>
+                <msub>
+                    <mi>x</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>,</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo stretchy="false">)</mo>
+                <mo>∈</mo>
+                <msup>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mi mathvariant="double-struck">R</mi>
+                    </mrow>
+                    <mn>2</mn>
+                </msup>
+                <mo>:</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≤</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msub>
+                            <mi>u</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>∧</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≤</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msub>
+                            <mi>u</mi>
+                            <mi>n</mi>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>∧</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≥</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msub>
+                            <mi>l</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>∧</mo>
+                <msub>
+                    <mi>y</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≥</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msub>
+                            <mi>l</mi>
+                            <mi>n</mi>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>∧</mo>
+                <msub>
+                    <mi>x</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≥</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msub>
+                            <mi>l</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo>∧</mo>
+                <msub>
+                    <mi>x</mi>
+                    <mi>s</mi>
+                </msub>
+                <mo>≤</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <msub>
+                            <mi>l</mi>
+                            <mi>n</mi>
+                        </msub>
+                    </mrow>
+                    <mrow class="MJX-TeXAtom-ORD">
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </msubsup>
+                <mo fence="false" stretchy="false">}</mo>
+            </math>
+            , where:
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mtable rowspacing="4pt" columnspacing="1em">
+                <mtr>
+                    <mtd>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mi>u</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>s</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                        <mo>=</mo>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>u</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>−</mo>
+                        <mi>cos</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>−</mo>
+                                <mo stretchy="false">(</mo>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>u</mi>
+                                    </mrow>
+                                </msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                                <mo>+</mo>
+                                <msqrt>
+                                    <mn>2</mn>
+                                </msqrt>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>,</mo>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mi>u</mi>
+                                    <mi>n</mi>
+                                </msub>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>s</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                        <mo>=</mo>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mi>n</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>u</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>−</mo>
+                        <mi>cos</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mi>n</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>−</mo>
+                                <mo stretchy="false">(</mo>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>u</mi>
+                                    </mrow>
+                                </msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                                <mo>+</mo>
+                                <msqrt>
+                                    <mn>2</mn>
+                                </msqrt>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>,</mo>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msubsup>
+                            <mi>x</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mi>l</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>s</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                        <mo>=</mo>
+                        <mi>cos</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>l</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>+</mo>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>−</mo>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>l</mi>
+                                    </mrow>
+                                </msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>,</mo>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mi>l</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>s</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                        <mo>=</mo>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>l</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>−</mo>
+                        <mi>cos</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>−</mo>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>l</mi>
+                                    </mrow>
+                                </msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>,</mo>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msubsup>
+                            <mi>x</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mi>l</mi>
+                                    <mi>n</mi>
+                                </msub>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>s</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                        <mo>=</mo>
+                        <mi>cos</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mi>n</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>l</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>+</mo>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mi>n</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>−</mo>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>l</mi>
+                                    </mrow>
+                                </msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>,</mo>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msubsup>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <msub>
+                                    <mi>l</mi>
+                                    <mi>n</mi>
+                                </msub>
+                            </mrow>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>s</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </msubsup>
+                        <mo>=</mo>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mi>n</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>l</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>−</mo>
+                        <mi>cos</mi>
+                        <mo>⁡</mo>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <msub>
+                                            <mi>t</mi>
+                                            <mi>n</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>h</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msubsup>
+                                <mo>−</mo>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                                <msub>
+                                    <mi>t</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>l</mi>
+                                    </mrow>
+                                </msub>
+                                <mrow class="MJX-TeXAtom-ORD">
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>.</mo>
+                    </mtd>
+                </mtr>
+            </mtable>
+        </math>
+
+        <p>The shape of the sofa is obtained based on discrete curves bounding its region by means of standard curve
+            intersection detection algorithms. The area of the sofa can be calculated as the area of a polygon with
+            multiple numbers of sides; if the symmetrical case is considered in order to accelerate the calculations,
+            they can be run for half of the sofa only.</p>
+
+        <h2>Results</h2>
+        <section class='FlexContainer'>
+            <div>
+                <p>Gerver's sofa:</p>
+                <img src="files/sofa2.gif" alt="Gerver's sofa" class="img2">
+            </div>
+            <div>
+                <p>Romik's ambidextrous sofa:</p>
+                <img src="files/sofa3.gif" alt="Gerver's sofa" class="img2">
+            </div>
+
+        </section>
+        <h2>Summary</h2>
+
+        <p>Proposed method may be successfully used for generating sofas. Moreover, the method could be used for
+            designing a mathematical model in which functions of the path of movement and the angle of rotation are
+            obtained in order to maximise the sofa's area. Another potential application of the designed method is to
+            prove that a truly optimal solution must be symmetrical. For that purpose, one can formulate a functional
+            describing the area of the sofa and construct a proof that the extremum is only reached when the path of
+            movement is symmetric and there is an odd parity of the angle of rotation (in other words, the sofa is
+            symmetric). One can try to achieve this by undermining, on the basis of the above assumptions, the system of
+            Euler equations, which is a necessary condition for the existence of an extremum. Nevertheless, the sofa
+            with the maximum area is that proposed by Gerver; not only is it highly likely to be the optimal solution to
+            the posed problem, but it is also possible to design a neat piece of furniture offering space for rather a
+            large coffee table:</p>
+
+        <img src="files/sofa4.png" alt="Optimal sofa design" class="center" width="500">
+
+        <section class='FlexContainer'>
+        <div align="left">
+            <a href="index.html">&#8592; Back to projects</a>
+        </div>
+        <div align="right">
+            <a href="#">&#8593; Back on top</a>
+        </div>
+        </section>
+    </article>
+</section>
+
+</body>
+</html>
+

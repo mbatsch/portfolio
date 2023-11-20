@@ -1,43 +1,67 @@
 /* SELEKTORY: */
 body {
-font-family: Calibri, Verdana, Arial, Helvetica, sans-serif;
-font-size: 12pt;
+font-family: 'Poppins', sans-serif;/*Calibri, Verdana, Arial, Helvetica, sans-serif;*/
+font-size: 10pt;
 color: #000000;
 background-color: white;
 max-width: max-content;
 margin: auto;
 }
+
 p {
 text-align: justify;
 }
 
 .info:before { content:
- "I am a mechanical engineer and scientist with over ten years of experience in scientific programming and computations including image and signal processing. Recently my scientific interests expanded to machine learning and neural networks. As a problem-solving-oriented person with the ability to understand complicated mathematical models and a strong mechanical engineering background, I\a0 am ready to dive into a data-driven world as a data scientist/ML engineer." ;
- text-align: justify;
+ "I am a mechanical engineer and scientist with over ten years of experience in scientific programming and computations including image and signal processing. Recently my scientific interests expanded to machine learning and neural networks. As a problem-solving-oriented person with the ability to understand complicated mathematical models and a strong mechanical engineering background, I\a0 am ready to dive into a data-driven world as a data scientist/ML engineer.";
+ text-align: left;
+ padding-right: 20px;
+ padding-left: 20px;
+ margin-left: 0em;
  }
 
 
-a:hover {
-color: #2776bb;
+a:active, a:link, a:visited  {
+  color: #000;
+  text-decoration: underline;
 	}
+
+a:hover {
+  color: #0447ff;
+  text-decoration: underline;
+	}
+
 
 * {
   box-sizing: border-box;
 }
 
 h1   {
-font-size: 16pt;
-}
-h2   {
-font-size: 12pt;
+font-size: 28pt;
+font-weight: 800;
+display:inline;
 }
 
-header {
-  background-color: #666;
-  padding: 5px;
-  text-align: center;
-  font-size: 10px;
-  color: white;
+h2   {
+font-size: 12pt;
+font-weight: 700;
+}
+
+h3   {
+font-size: 20pt;
+font-weight: 400;
+}
+
+h_big_blue   {
+font-size: 20pt;
+color: #0447ff;
+display:inline;
+}
+
+h_name   {
+font-size: 18pt;
+font-weight: bold;
+display:inline;
 }
 
 /* Create two columns/boxes that floats next to each other */
@@ -50,6 +74,7 @@ header {
 .img1
 {
 width: auto;
+margin-bottom: -6px;
 }
 
 .img2
@@ -65,20 +90,22 @@ nav {
   float: left;
   width: 300px;/*300px;*/
   background: white;
-  padding: 20px;
+  padding: 0px;
 }
 
 /* Style the list inside the menu */
 nav ul {
   list-style-type: none;
   padding: 0;
+
 }
 
 article {
   float: left;
   padding: 20px;
-  width: 880px;/*880px;*/
+  width: 881px;/*880px;*/
   background-color: white;
+  border-left: 1px solid #c4c4c4;
 }
 
 /* Clear floats after the columns */
@@ -95,15 +122,21 @@ section::after {
   }
 }
 
-@media only screen and (min-device-width : 100px) and (max-device-width : 500px) {
-  article, img, nav {
-    width: 100%;
-    height: auto;
+@media only screen and (min-device-width : 0px) and (max-device-width : 500px) {
+  article, nav, {
+      width: 100%;
+      height: auto;
   }
+img {
+      width: calc(100% + 20px);
+      /*width: 100%;*/
+      height: auto;
+      }
     img1 {
     width: auto;
     height: auto;
   }
+
 }
 
 .FlexContainer {
@@ -114,20 +147,62 @@ section::after {
     align-content: flex-start;
     overflow: auto;
     flex-direction: row;
-
 }
 
 .FlexContainer div {
     width: 400px;
     height: auto;
     margin: 10px;
-    background-color: white;
-    padding:0px;
+    background-color: #efefef;/*e2e2e2; #f6f6f6;*/
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+    padding-top:0px;
+    border-radius: 20px;
+}
 
+.FlexContainer img {
+    margin-left: -10px;
+    /*height: 100%; width: 100%; object-fit: contain;*/
+}
+
+.FlexContainer2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    overflow: auto;
+    flex-direction: row;
+}
+
+.FlexContainer2 div {
+    width: 400px;
+    height: auto;
+    margin: 10px;
+    background-color: white;/*e2e2e2; #f6f6f6;*/
+    /*padding-left:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+    padding-top:0px;
+    border-radius: 20px;*/
 }
 
 span {
-  background: #2776bb;
+  /*background: #fff;*/
+  color: #0447ff;
+  padding: 1px 5px;
+  border-radius: 5px;
+  border: 1px solid #0447ff;
+  margin: 0 0px;
+  -webkit-box-decoration-break: clone;
+  -moz-background-inline-policy: clone;
+  box-decoration-break: clone;
+  line-height: 180%
+}
+
+span_rm {
+  background: #0447ff;
   color: #fff;
   padding: 1px 5px;
   border-radius: 5px;
@@ -137,3 +212,30 @@ span {
   box-decoration-break: clone;
   line-height: 150%
 }
+
+#rm a:active, #rm a:link,  #rm a:visited  {
+  background: #0447ff;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin: 0 0px;
+  -webkit-box-decoration-break: clone;
+  -moz-background-inline-policy: clone;
+  box-decoration-break: clone;
+  text-decoration: none;
+  float: right;
+  }
+
+#rm a:hover {
+  background: #0447ff;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin: 0 0px;
+  -webkit-box-decoration-break: clone;
+  -moz-background-inline-policy: clone;
+  box-decoration-break: clone;
+  text-decoration: underline;
+  float: right;
+	}
+

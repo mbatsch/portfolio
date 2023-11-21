@@ -42,10 +42,12 @@
                     person with the ability to understand complicated mathematical models and a strong mechanical
                     engineering background, I&nbsp am ready to dive into a data-driven world as a data scientist/ML
                     engineer.</p>
-                <li><i class="fa fa-download" style="color: #0447ff;"></i>&nbsp<a href="CV_Michal_Batsch.pdf" target="_blank">CV download</a>
+                <li><i class="fa fa-download" style="color: #0447ff;"></i>&nbsp<a href="CV_Michal_Batsch.pdf"
+                                                                                  target="_blank">CV download</a>
                 </li>
                 <h3>Contact</h3>
-                <li><i class="fa fa-linkedin-square" style="color: #0447ff;"></i>&nbsp<a href="https://www.linkedin.com/in/michal-batsch">LinkedIn</a>
+                <li><i class="fa fa-linkedin-square" style="color: #0447ff;"></i>&nbsp<a
+                        href="https://www.linkedin.com/in/michal-batsch">LinkedIn</a>
                 </li>
                 <li><i class="ai ai-researchgate-square" style="color: #0447ff;"></i>&nbsp<a
                         href="https://www.researchgate.net/profile/Michal-Batsch-2">ResearchGate</a></li>
@@ -56,12 +58,413 @@
         <div align="left"><a href="index.html">&#8592; Back to projects</a></div>
         <h1>Vision based control of small educational double SCARA robot</h1>
         <h2>Used tools and packages</h2>
- <span>Python</span> <span>OpenCV</span> <span>TensorFlow</span> <span>Scikit-learn</span>
-                <span>NumPy</span> <span>Scipy</span> <span>C</span> <span>RaspberryPI</span> <span>Matlab</span>
+        <span>Python</span> <span>OpenCV</span> <span>TensorFlow</span> <span>Scikit-learn</span>
+        <span>NumPy</span> <span>Scipy</span> <span>C</span> <span>RaspberryPI</span> <span>Matlab</span>
 
         <h2>Introduction</h2>
 
-        <p>to be filled</p>
+        <p>This project aimed to develop an easy-to-build and deploy educational robot, which may be used during classes
+            to study machine vision-based control and classification. This was achieved by a double SCARA structure
+            driven by two stepper motors controlled by RaspberryPI Zero. The 3D CAD model of the designed manipulator is
+            shown below:</p>
+
+        <img src="files/scara1.png" alt="Double SCARA robot" class="img2">
+
+        <p>As the gripper the electromagnet is used which may manipulate objects into one from selected boxes attached.
+            The camera is observing the working area of the manipulator. Control of the position of the tool center
+            point (TCP) is realized with the aid of inverse kinematics:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mtable rowspacing="4pt" columnspacing="1em">
+                <mtr>
+                    <mtd>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>R</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mtext>atan2</mtext>
+                        </mrow>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>T</mi>
+                                <mi>C</mi>
+                                <mi>P</mi>
+                            </mrow>
+                        </msub>
+                        <mo>,</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>T</mi>
+                                <mi>C</mi>
+                                <mi>P</mi>
+                            </mrow>
+                        </msub>
+                        <mo>−</mo>
+                        <mi>e</mi>
+                        <mo stretchy="false">)</mo>
+                        <mo>−</mo>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mtext>acos</mtext>
+                        </mrow>
+                        <mfrac>
+                            <mrow>
+                                <mo stretchy="false">(</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>T</mi>
+                                        <mi>C</mi>
+                                        <mi>P</mi>
+                                    </mrow>
+                                </msub>
+                                <mo>−</mo>
+                                <mi>e</mi>
+                                <msup>
+                                    <mo stretchy="false">)</mo>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>T</mi>
+                                        <mi>C</mi>
+                                        <mi>P</mi>
+                                    </mrow>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>l</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>−</mo>
+                                <msubsup>
+                                    <mi>l</mi>
+                                    <mn>2</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mn>2</mn>
+                                <msub>
+                                    <mi>l</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <msqrt>
+                                    <mo stretchy="false">(</mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>T</mi>
+                                            <mi>C</mi>
+                                            <mi>P</mi>
+                                        </mrow>
+                                    </msub>
+                                    <mo>−</mo>
+                                    <mi>e</mi>
+                                    <msup>
+                                        <mo stretchy="false">)</mo>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>T</mi>
+                                            <mi>C</mi>
+                                            <mi>P</mi>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msubsup>
+                                </msqrt>
+                            </mrow>
+                        </mfrac>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msub>
+                            <mi>φ</mi>
+                            <mi>L</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mtext>atan2</mtext>
+                        </mrow>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>T</mi>
+                                <mi>C</mi>
+                                <mi>P</mi>
+                            </mrow>
+                        </msub>
+                        <mo>,</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>T</mi>
+                                <mi>C</mi>
+                                <mi>P</mi>
+                            </mrow>
+                        </msub>
+                        <mo>+</mo>
+                        <mi>e</mi>
+                        <mo stretchy="false">)</mo>
+                        <mo>+</mo>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mtext>acos</mtext>
+                        </mrow>
+                        <mfrac>
+                            <mrow>
+                                <mo stretchy="false">(</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>T</mi>
+                                        <mi>C</mi>
+                                        <mi>P</mi>
+                                    </mrow>
+                                </msub>
+                                <mo>+</mo>
+                                <mi>e</mi>
+                                <msup>
+                                    <mo stretchy="false">)</mo>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mrow class="MJX-TeXAtom-ORD">
+                                        <mi>T</mi>
+                                        <mi>C</mi>
+                                        <mi>P</mi>
+                                    </mrow>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>l</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>−</mo>
+                                <msubsup>
+                                    <mi>l</mi>
+                                    <mn>2</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                            </mrow>
+                            <mrow>
+                                <mn>2</mn>
+                                <msub>
+                                    <mi>l</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <msqrt>
+                                    <mo stretchy="false">(</mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>T</mi>
+                                            <mi>C</mi>
+                                            <mi>P</mi>
+                                        </mrow>
+                                    </msub>
+                                    <mo>+</mo>
+                                    <mi>e</mi>
+                                    <msup>
+                                        <mo stretchy="false">)</mo>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msubsup>
+                                        <mi>y</mi>
+                                        <mrow class="MJX-TeXAtom-ORD">
+                                            <mi>T</mi>
+                                            <mi>C</mi>
+                                            <mi>P</mi>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msubsup>
+                                </msqrt>
+                            </mrow>
+                        </mfrac>
+                    </mtd>
+                </mtr>
+            </mtable>
+        </math>
+
+        <p>Manipulator parts were manufactured with the aid of 3D printing. The camera may provide information about the
+            position of TCP and object location. For that purpose, the calibration needs to be performed:</p>
+
+        <img src="files/scara2.png" alt="Calibration" class="img2">
+        <p>In that way one may obtain, based on the image coordinates the coordinates in the real working area:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mtable rowspacing="4pt" columnspacing="1em">
+                <mtr>
+                    <mtd>
+                        <msub>
+                            <mi>s</mi>
+                            <mi>c</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mn>100</mn>
+                            <mn>415</mn>
+                        </mfrac>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mtext>px/mm</mtext>
+                        </mrow>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msub>
+                            <mi>v</mi>
+                            <mi>x</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mn>340</mn>
+                        <msub>
+                            <mi>s</mi>
+                            <mi>c</mi>
+                        </msub>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msub>
+                            <mi>v</mi>
+                            <mi>y</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mn>212</mn>
+                        <msub>
+                            <mi>s</mi>
+                            <mi>c</mi>
+                        </msub>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>y</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mn>95</mn>
+                        <mrow class="MJX-TeXAtom-ORD">
+                            <mtext>mm</mtext>
+                        </mrow>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <mi>x</mi>
+                        <mo>=</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>i</mi>
+                                <mi>m</mi>
+                            </mrow>
+                        </msub>
+                        <msub>
+                            <mi>s</mi>
+                            <mi>c</mi>
+                        </msub>
+                        <mo>−</mo>
+                        <msub>
+                            <mi>v</mi>
+                            <mi>x</mi>
+                        </msub>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <mo>−</mo>
+                        <msub>
+                            <mi>y</mi>
+                            <mrow class="MJX-TeXAtom-ORD">
+                                <mi>i</mi>
+                                <mi>m</mi>
+                            </mrow>
+                        </msub>
+                        <mo>∗</mo>
+                        <msub>
+                            <mi>s</mi>
+                            <mi>c</mi>
+                        </msub>
+                        <mo>+</mo>
+                        <msub>
+                            <mi>v</mi>
+                            <mi>y</mi>
+                        </msub>
+                        <mo>+</mo>
+                        <msub>
+                            <mi>t</mi>
+                            <mi>y</mi>
+                        </msub>
+                    </mtd>
+                </mtr>
+            </mtable>
+        </math>
+
+        <p>Object detection may be realized with OpenCV hblob analysis. Next, the location of each object within the
+            image is used to calculate the position in the working area and to handle parts in the proper box.</p>
+
+        <h2>Image classification</h2>
+
+        <p>The proposed educational stand may be used for image recognition and classification. As an example, the small
+            steel galvanized parts are used (a) which part of them have surface defects (b):</p>
+
+        <img src="files/scara4.png" alt="Classified parts" class="img2">
+
+        <p>This is a real industrial problem occurring in mass production which should be handled by an automatic system
+            of
+            inspection. The previously described object detection method may be used for data collection:</p>
+
+        <img src="files/scara5.png" alt="Data acquisition" class="img2">
+
+        <p>Acquired data consists of 304 bad and 304 good images the size of which is 90px x 90px randomly located
+            within the working
+            area. These data are then used to train, validate and test neural network schematically shown below:</p>
+
+        <img src="files/scara_network.png" alt="Classified parts" class="img2">
+
+        <p>The neural network was designed as a deep convolutional neural network with six hidden layers. To train, the
+            214 defects and 214 good images were used. For validation and testing 60/60 and 30/30 images were used
+            respectively. The results of testing are shown as confusion matrix below:</p>
+
+        <img src="files/scara_cf.png" alt="Confusion matrix" class="img2">
+
+        <h2>Summary</h2>
+
+        <p>Presented educational stand may be successfully used for courses on:
+        <p>
+        <ul>
+            <li>deep learning in machine vision,
+            </li>
+            <li>classification
+            </li>
+            <li>object tracking and detection,
+            </li>
+            <li>
+                vision-based control.
+            </li>
+        </ul>
 
         <div>
             <a href="index.html">&#8592; Back to projects</a>&nbsp&nbsp&nbsp<a href="#">&#8593; Back on top</a>

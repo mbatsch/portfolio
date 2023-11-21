@@ -90,13 +90,17 @@
         <h2>Data preparation</h2>
 
 
-        <p>Data was acquired during the experiment that I conducted on a power circulation test stand on two sets of
-            gears. The first one (gear pair I) whose teeth have been gas-nitrided (surface hardness 600-750HV) provided
+        <p>Data was acquired during the experiment that I conducted on a power circulation test stand (Fig. a) on two sets of
+            gears (Fig. b).</p>
+
+        <img src="files/autoencoder_test.png" alt="Test stand" class="img2">
+
+        <p>The first one (gear pair I) whose teeth have been gas-nitrided (surface hardness 600-750HV) provided
             necessary data for training and testing the neural network in normal operational conditions (without
             damage). The second gear pair (gear pair II) which was only quenched and tempered (surface hardness
             28-30HRC) was used to test the ability of the neural network to detect a failure.
             During the tests the vertical (perpendicular to the shafts’ plane) vibrations of the tested gear case were
-            acquired. The sampling frequency was 25kHz while the signal duration was 1s which gives 25000 samples for
+            acquired (piezoelectric sensor - item no. 8). The sampling frequency was 25kHz while the signal duration was 1s which gives 25000 samples for
             each measurement. Measurement were taken several times during the operation.
             Before training and testing the neural network, data was prepared as described in this section. Firstly, the
             measured and acquired vibrational signal was split into 25 segments (b):</p>

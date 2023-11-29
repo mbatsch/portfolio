@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c784e75-8008-415f-8ab9-d44e833d5dc0" name="Changes" comment="" />
+    <list default="true" id="9c784e75-8008-415f-8ab9-d44e833d5dc0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autoencoder.html" beforeDir="false" afterPath="$PROJECT_DIR$/autoencoder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/honing.html" beforeDir="false" afterPath="$PROJECT_DIR$/honing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roundness.html" beforeDir="false" afterPath="$PROJECT_DIR$/roundness.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scara.html" beforeDir="false" afterPath="$PROJECT_DIR$/scara.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sofa.html" beforeDir="false" afterPath="$PROJECT_DIR$/sofa.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vibrations.html" beforeDir="false" afterPath="$PROJECT_DIR$/vibrations.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

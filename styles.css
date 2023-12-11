@@ -224,6 +224,7 @@ span_rm {
   box-decoration-break: clone;
   text-decoration: none;
   float: right;
+  margin-left: 5px;
   }
 
 #rm a:hover {
@@ -237,5 +238,6 @@ span_rm {
   box-decoration-break: clone;
   text-decoration: underline;
   float: right;
+  margin-left: 5px;
 	}
 

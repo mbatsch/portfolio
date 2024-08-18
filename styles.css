@@ -86,6 +86,15 @@ height: auto;
   margin-right: auto;
 }
 
+.img3
+{
+display: block;
+width: 70%;
+height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 nav {
   float: left;
   width: 300px;/*300px;*/
